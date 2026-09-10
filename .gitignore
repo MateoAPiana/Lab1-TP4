@@ -1,0 +1,39 @@
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
+build/
+dist/
+
+# Archivos generados por NetBeans
+/nbproject/private/
+/nbproject/build-impl.xml
+/nbproject/genfiles.properties
+/nbproject/build-impl.xml
+
+# Compilación Java
+*.class
+*.jar
+
+# Archivos temporales
+*.tmp
+*.log
+*.swp
+*.swo
+*~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+
+# Java
+hs_err_pid*
+
+# NetBeans user-specific files
+/nbproject/private/
