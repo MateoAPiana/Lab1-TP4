@@ -35,9 +35,6 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
         setTitle("Formulario de Materia");
 
         jLabel1.setText("jLabel1");

@@ -16,7 +16,12 @@ public class Escritorio extends javax.swing.JFrame {
      */
     public Escritorio() {
         initComponents();
-
+escritorio.setDesktopManager(new javax.swing.DefaultDesktopManager() {
+        @Override
+        public void dragFrame(javax.swing.JComponent f, int newX, int newY) {
+            // Al dejar este método vacío, el usuario no podrá mover la ventana
+        }
+    });
     }
 
     /**
