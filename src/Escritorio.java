@@ -1,12 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author Mateo Andrés
- */
 public class Escritorio extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Escritorio.class.getName());
@@ -16,7 +7,7 @@ public class Escritorio extends javax.swing.JFrame {
      */
     public Escritorio() {
         initComponents();
-
+        Colegio.main();
     }
 
     /**
@@ -37,6 +28,7 @@ public class Escritorio extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("TP 4");
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -131,7 +123,7 @@ public class Escritorio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu4KeyTyped
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
-        System.out.println("aaaaaaa");
+
         System.exit(0);    }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked

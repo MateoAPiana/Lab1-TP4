@@ -1,27 +1,60 @@
+
+import java.util.ArrayList;
+
 public class Colegio {
+    
+    static private ArrayList<Alumno> alumnos  = new ArrayList<>();
+    static private ArrayList<Materia> materias  = new ArrayList<>();
 
-    public void main(String[] args) {
+    public static void main() {
        
-        Materia web2 = new Materia(1, "Web 2", 2);
-        Materia mate = new Materia(2, "Matematicas", 1);
-        Materia lab1 = new Materia(3, "Laboratorio 1", 1);
-
+        agregarMateria(1, "Web 2", 2);
+        agregarMateria(2, "Matematicas", 1);
+        agregarMateria(3, "Laboratorio 1", 1);
         
-        Alumno a1 = new Alumno(1001, "Lopez", "Martin");
-        Alumno a2 = new Alumno(1002, "Martinez", "Brenda");
-
-      
-        a1.agregarMateria(web2);
-        a1.agregarMateria(mate);
-        a1.agregarMateria(lab1);
-
-        a2.agregarMateria(web2);
-        a2.agregarMateria(mate);
-        a2.agregarMateria(lab1);
-        a2.agregarMateria(lab1); 
-
+        agregarAlumno(1001, "Lopez", "Martin");
+        agregarAlumno(1002, "Martinez", "Brenda");
         
-        System.out.println("Cantidad de materias de " + a1.getApellido() + " " + a1.getNombre() + ": " + a1.cantidadMaterias());
-        System.out.println("Cantidad de materias de " + a2.getApellido() + " " + a2.getNombre() + ": " + a2.cantidadMaterias());
+        registrarAlumno(0, 0);
+        registrarAlumno(0, 1);
+        registrarAlumno(0, 2);
+        
+        registrarAlumno(1, 0);
+        registrarAlumno(1, 1);
+        registrarAlumno(1, 2);
+        registrarAlumno(1, 2);
+        
+        System.out.println("Cantidad de materias de " + alumnos.get(0).getApellido() + " " + alumnos.get(0).getNombre() + ": " + alumnos.get(0).cantidadMaterias());
+        System.out.println("Cantidad de materias de " + alumnos.get(1).getApellido() + " " + alumnos.get(1).getNombre() + ": " + alumnos.get(1).cantidadMaterias());
+    }
+
+    public static ArrayList<Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public static void setAlumnos(ArrayList<Alumno> alumnos) {
+        Colegio.alumnos = alumnos;
+    }
+
+    public static ArrayList<Materia> getMaterias() {
+        return materias;
+    }
+
+    public static void setMaterias(ArrayList<Materia> materias) {
+        Colegio.materias = materias;
+    }
+    
+    public static void agregarMateria(int id, String nombre, int año){
+        Materia materia = new Materia(id, nombre, año);
+        materias.add(materia);
+    }
+    
+    public static void agregarAlumno(int letajo, String apellido, String nombre){
+        Alumno alumno = new Alumno(letajo, apellido, nombre);
+        alumnos.add(alumno);
+    }
+    
+    public static void registrarAlumno(int indexA, int indexM){
+        alumnos.get(indexA).agregarMateria(materias.get(indexM));
     }
 }
