@@ -69,4 +69,10 @@ public class Colegio {
             System.out.println(a.getNombre());
         }
     }
+    
+    public static void mostrarMaterias(){
+        for (Materia m : materias){
+            System.out.println(m.getNombre_materia());
+        }
+    }
 }

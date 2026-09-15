@@ -28,28 +28,24 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        lb_nombre = new javax.swing.JTextField();
+        lb_ID = new javax.swing.JTextField();
+        lb_año = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_reset = new javax.swing.JButton();
+        btn_submit = new javax.swing.JButton();
 
         setTitle("Formulario de Materia");
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("ID");
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Nombre");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("Año");
 
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+        lb_nombre.addActionListener(this::lb_nombreActionPerformed);
 
-        jTextField2.setText("jTextField2");
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
-
-        jTextField3.setText("jTextField3");
+        lb_ID.addActionListener(this::lb_IDActionPerformed);
 
         jButton1.setText("Salir");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,9 +54,19 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Nuevo");
+        btn_reset.setText("Nuevo");
+        btn_reset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Reset(evt);
+            }
+        });
 
-        jButton3.setText("Guardar");
+        btn_submit.setText("Guardar");
+        btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NuevaMateria(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,14 +83,14 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton3)
+                                .addComponent(btn_submit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)
+                                .addComponent(btn_reset)
                                 .addGap(32, 32, 32))
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                            .addComponent(lb_año, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                            .addComponent(lb_nombre)
+                            .addComponent(lb_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(55, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
@@ -96,48 +102,74 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lb_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lb_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lb_año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btn_reset)
+                    .addComponent(btn_submit))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void lb_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lb_nombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_lb_nombreActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void lb_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lb_IDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_lb_IDActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
 this.dispose(); 
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void NuevaMateria(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevaMateria
+        String idT = lb_ID.getText();
+        String nombre = lb_nombre.getText();
+        String añoT = lb_año.getText();
+        
+        try{
+            int id = Integer.valueOf(idT);
+            int año = Integer.valueOf(añoT);
+            Colegio.agregarMateria(id, nombre, año);
+            Colegio.mostrarMaterias();
+        }catch(Error err){
+            System.out.println(err.toString());
+        }finally{
+            lb_ID.setText("");
+            lb_nombre.setText("");
+            lb_año.setText("");
+        }
+        
+    }//GEN-LAST:event_NuevaMateria
+
+    private void Reset(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Reset
+        lb_ID.setText("");
+        lb_nombre.setText("");
+        lb_año.setText("");
+    }//GEN-LAST:event_Reset
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_reset;
+    private javax.swing.JButton btn_submit;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField lb_ID;
+    private javax.swing.JTextField lb_año;
+    private javax.swing.JTextField lb_nombre;
     // End of variables declaration//GEN-END:variables
 }
