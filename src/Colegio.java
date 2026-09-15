@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Colegio {
@@ -74,5 +75,29 @@ public class Colegio {
         for (Materia m : materias){
             System.out.println(m.getNombre_materia());
         }
+    }
+    
+    public static String[] getLetajoAlumnos(){
+        ArrayList<String> letajosList = new ArrayList<>();
+        for (Alumno a : alumnos){
+            letajosList.add(String.valueOf(a.getLegajo()));
+        }
+        String[] letajos = new String[letajosList.size()];
+        for(int i = 0; i < letajosList.size(); i++){
+            letajos[i] = letajosList.get(i);
+        }
+        return letajos;
+    }
+    
+    public static String[] getIDMaterias(){
+        ArrayList<String> IDList = new ArrayList<>();
+        for (Materia a : materias){
+            IDList.add(String.valueOf(a.getId_materia()));
+        }
+        String[] ID = new String[IDList.size()];
+        for(int i = 0; i < IDList.size(); i++){
+            ID[i] = IDList.get(i);
+        }
+        return ID;
     }
 }

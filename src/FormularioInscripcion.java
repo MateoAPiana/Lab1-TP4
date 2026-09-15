@@ -1,3 +1,6 @@
+
+import javax.swing.DefaultComboBoxModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
@@ -26,11 +29,11 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_alumno = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cb_materia = new javax.swing.JComboBox<>();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jLabel3 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
@@ -41,11 +44,17 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
         setTitle("Formulario de Inscripcion");
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Letajo de alumno");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_alumno.setModel(new javax.swing.DefaultComboBoxModel<>(Colegio.getLetajoAlumnos()));
+        cb_alumno.addActionListener(this::cb_alumnoActionPerformed);
 
         jButton1.setText("Inscribir");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NuevaInscripcion(evt);
+            }
+        });
 
         jButton2.setText("Salir");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -54,9 +63,9 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("ID de materia");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_materia.setModel(new javax.swing.DefaultComboBoxModel<>(Colegio.getIDMaterias()));
 
         jInternalFrame1.setTitle("Formulario de Inscripcion");
         try {
@@ -141,9 +150,9 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2))
                         .addGap(69, 69, 69)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 67, Short.MAX_VALUE)))
+                            .addComponent(cb_materia, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 12, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -157,11 +166,11 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_materia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -185,14 +194,33 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4MouseClicked
 
+    private void cb_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_alumnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_alumnoActionPerformed
+
+    private void NuevaInscripcion(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevaInscripcion
+        String letajoT = cb_alumno.getSelectedItem().toString();
+        String IDT = cb_materia.getSelectedItem().toString();
+        
+        try{
+            int letajo = Integer.valueOf(letajoT);
+            int ID = Integer.valueOf(IDT);
+            Colegio.registrarAlumno(letajo, ID);
+        }catch(Error err){
+            System.out.println(err.toString());
+        }finally{
+            this.dispose();
+        }
+    }//GEN-LAST:event_NuevaInscripcion
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cb_alumno;
+    private javax.swing.JComboBox<String> cb_materia;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JInternalFrame jInternalFrame1;

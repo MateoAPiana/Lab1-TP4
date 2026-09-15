@@ -37,6 +37,7 @@ public class Alumno{
     }
     public void agregarMateria(Materia materia) {
         materias.add(materia);
+        System.out.println("Se inscribio a " + this.nombre + " a la materia " + materia.getNombre_materia());
     }
     public int cantidadMaterias() {
         return materias.size();
