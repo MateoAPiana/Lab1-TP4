@@ -1,10 +1,10 @@
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Colegio {
     
-    static private ArrayList<Alumno> alumnos  = new ArrayList<>();
-    static private ArrayList<Materia> materias  = new ArrayList<>();
+    static private HashSet<Alumno> alumnos  = new HashSet<>();
+    static private HashSet<Materia> materias  = new HashSet<>();
 
     public static void main() {
        
@@ -15,32 +15,29 @@ public class Colegio {
         agregarAlumno(1001, "Lopez", "Martin");
         agregarAlumno(1002, "Martinez", "Brenda");
         
-        registrarAlumno(0, 0);
-        registrarAlumno(0, 1);
-        registrarAlumno(0, 2);
+        registrarAlumno(1001, 1);
+        registrarAlumno(1001, 2);
+        registrarAlumno(1001, 3);
         
-        registrarAlumno(1, 0);
-        registrarAlumno(1, 1);
-        registrarAlumno(1, 2);
-        registrarAlumno(1, 2);
-        
-        System.out.println("Cantidad de materias de " + alumnos.get(0).getApellido() + " " + alumnos.get(0).getNombre() + ": " + alumnos.get(0).cantidadMaterias());
-        System.out.println("Cantidad de materias de " + alumnos.get(1).getApellido() + " " + alumnos.get(1).getNombre() + ": " + alumnos.get(1).cantidadMaterias());
+        registrarAlumno(1002, 1);
+        registrarAlumno(1002, 2);
+        registrarAlumno(1002, 3);
+        registrarAlumno(1002, 3);
     }
 
-    public static ArrayList<Alumno> getAlumnos() {
+    public static HashSet<Alumno> getAlumnos() {
         return alumnos;
     }
 
-    public static void setAlumnos(ArrayList<Alumno> alumnos) {
+    public static void setAlumnos(HashSet<Alumno> alumnos) {
         Colegio.alumnos = alumnos;
     }
 
-    public static ArrayList<Materia> getMaterias() {
+    public static HashSet<Materia> getMaterias() {
         return materias;
     }
 
-    public static void setMaterias(ArrayList<Materia> materias) {
+    public static void setMaterias(HashSet<Materia> materias) {
         Colegio.materias = materias;
     }
     
@@ -52,9 +49,24 @@ public class Colegio {
     public static void agregarAlumno(int letajo, String apellido, String nombre){
         Alumno alumno = new Alumno(letajo, apellido, nombre);
         alumnos.add(alumno);
+        System.out.println("Alumno agregado");
     }
     
-    public static void registrarAlumno(int indexA, int indexM){
-        alumnos.get(indexA).agregarMateria(materias.get(indexM));
+    public static void registrarAlumno(int letajo, int id_materia) {
+        for (Alumno a : alumnos) {
+            if (a.getLegajo() == letajo) {
+                for (Materia m : materias) {
+                    if (m.getId_materia()== id_materia) {
+                        a.agregarMateria(m);
+                    }
+                }
+            }
+        }
+    }
+    
+    public static void mostrarAlumnos(){
+        for (Alumno a : alumnos){
+            System.out.println(a.getNombre());
+        }
     }
 }
